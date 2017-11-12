@@ -1,10 +1,14 @@
 {
-  "name": "008-node-chat-app",
+  "name": "node-chat-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.2.2"
   },
   "author": "",
   "license": "ISC",
