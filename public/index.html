@@ -10,19 +10,15 @@
 
 <body>
     <h1>Welcome to the chat app</h1>
+    <textarea name="" id="msg" cols="30" rows="4"></textarea><br/>
+    <button onclick="sendMessage()">Absenden</button>
+    <div id="response" style="border: 1px solid #aaa; width: 600px; margin-top: 25px; height: 200px">
+
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-
-        socket.on('connect', () => {
-            console.log('Connected to server');
-        });
-
-        socket.on('disconnect', () => {
-            console.log('Disconnected from server');
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+   
 </body>
-
 </html>
