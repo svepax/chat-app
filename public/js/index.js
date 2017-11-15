@@ -10,4 +10,10 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function(message) {
     console.log(message);
+    var li = jQuery('<li></li>');
+    li.text(`${message.from}: ${message.text}`);
+
+    $('#response').append(li);
 });
+
+

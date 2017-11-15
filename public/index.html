@@ -12,13 +12,25 @@
     <h1>Welcome to the chat app</h1>
     <textarea name="" id="msg" cols="30" rows="4"></textarea><br/>
     <button onclick="sendMessage()">Absenden</button>
-    <div id="response" style="border: 1px solid #aaa; width: 600px; margin-top: 25px; height: 200px">
+    <ol id="response">
 
-    </div>
+    </ol>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="/js/index.js"></script>
+
+    <script>
+        function sendMessage() {
+            socket.emit('createMessage', { text: $('#msg').val(), from: 'Dieter'}, function(data) {
+                console.log(data);
+                //var li = $('<li></li>');
+                //li.text(data);
+                //$('#response').(li);
+            });
+            
+        }
+    </script>
    
 </body>
 </html>
