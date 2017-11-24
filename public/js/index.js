@@ -33,12 +33,19 @@ locationButton.on('click', function() {
         return alert('Geolocation not supported by your browser.');
     }
 
+    $('#sendLocation').attr('disabled', 'disabled').text('Sending location...');
+
     navigator.geolocation.getCurrentPosition(function(position) {
+        $('#sendLocation').removeAttr('disabled');
+        $('#sendLocation').text('Send location');
+        
         socket.emit('createLocationMessage', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
-        })
+        });
     }, function() {
+        $('#sendLocation').removeAttr('disabled');
+        $('#sendLocation').text('Send location');
         alert('Unable to fetch location');
     });
 });
