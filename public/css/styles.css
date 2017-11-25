@@ -24,7 +24,6 @@
     cursor: pointer;
     padding: 10px;
     transition: background .3s ease;
-    margin-left: 6px;
   }
   
   button:hover {

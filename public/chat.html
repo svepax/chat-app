@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chat | ChatApp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="chat">
+    
+    <div class="chat__sidebar">
+        <h3>People</h3>
+    </div>
+
+    <div class="chat__main">
+        <ol id="response" class="chat__messages">
+                
+        </ol>
+        
+        <div class="chat__footer">
+            <form id="messageForm">
+                <input name="" id="msg"><br/>
+                <button type="submit">Absenden</button>    
+                <button id="sendLocation">Send Location</button>        
+            </form>
+        </div>
+        
+    </div>    
+
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4>{{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body">
+                <p>{{text}}</p>
+            </div>
+        </li>
+    </script>
+
+    <script id="location-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4>{{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body">
+                <a href={{url}}>My current location</p>
+            </div>
+        </li>
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/js/moment.js"></script>
+    <script src="/js/mustache.js"></script>
+    <script src="/js/chat.js"></script>
+   
+</body>
+</html>
