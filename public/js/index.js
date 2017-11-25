@@ -18,7 +18,22 @@ socket.on('newMessage', function(message) {
     });
 
     $('#response').append(html);
+
+    scrollToBottom();
 });
+
+jQuery('#messageForm').on('submit', function (e) {
+    e.preventDefault();
+  
+    var messageTextbox = $('#msg');
+  
+    socket.emit('createMessage', {
+      from: 'User',
+      text: messageTextbox.val()
+    }, function () {
+      messageTextbox.val('')
+    });
+  });
 
 socket.on('newLocationMessage', function(message) {
     var template = $('#location-template').html();
@@ -30,6 +45,8 @@ socket.on('newLocationMessage', function(message) {
     });
 
     $('#response').append(html);
+
+    scrollToBottom();
 })
 
 var locationButton = jQuery('#sendLocation');
@@ -54,3 +71,20 @@ locationButton.on('click', function() {
         alert('Unable to fetch location');
     });
 });
+
+function scrollToBottom() {
+    // selectors
+    var messages = $('#response');
+    var newMessage = messages.children('li:last-child');
+    // heights
+    var clientHeight = messages.prop('clientHeight');
+    var scrollTop = messages.prop('scrollTop');
+    var scrollHeight = messages.prop('scrollHeight');
+    var newMessageHeight = newMessage.innerHeight();
+    var lastMessageHeight = newMessage.prev().innerHeight();
+
+    if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
+        console.log('Should scroll');        
+        messages.scrollTop(scrollHeight);
+    }
+}

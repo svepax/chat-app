@@ -20,10 +20,11 @@
         </ol>
         
         <div class="chat__footer">
+            <form id="messageForm">
                 <input name="" id="msg"><br/>
-                <button onclick="sendMessage()">Absenden</button>    
+                <button type="submit">Absenden</button>    
                 <button id="sendLocation">Send Location</button>        
-            
+            </form>
         </div>
         
     </div>    
@@ -57,18 +58,6 @@
     <script src="/js/moment.js"></script>
     <script src="/js/mustache.js"></script>
     <script src="/js/index.js"></script>
-
-    <script>
-        function sendMessage() {
-            socket.emit('createMessage', { text: $('#msg').val(), from: 'Dieter'}, function(data) {
-                $('#msg').val('');
-                
-            });
-
-            
-            
-        }
-    </script>
    
 </body>
 </html>
