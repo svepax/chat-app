@@ -80,6 +80,7 @@ locationButton.on('click', function() {
         $('#sendLocation').removeAttr('disabled');
         $('#sendLocation').text('Send location');
         
+        console.log('sending locationMessage');
         socket.emit('createLocationMessage', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
